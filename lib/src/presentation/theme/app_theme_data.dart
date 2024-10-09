@@ -1,3 +1,4 @@
+import 'package:amia_assignment/src/presentation/theme/typography.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeData {
@@ -13,7 +14,15 @@ class AppThemeData {
       backgroundColor: lightScheme.primary,
       centerTitle: false,
     ),
+    navigationBarTheme: NavigationBarThemeData(
+      labelTextStyle: WidgetStateTextStyle.resolveWith(
+        (states) {
+          if (states.contains(WidgetState.selected)) return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
 
+          return AppTypography.defaultTextStyle;
+        },
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -22,6 +31,15 @@ class AppThemeData {
     appBarTheme: AppBarTheme(
       backgroundColor: darkScheme.primary,
       centerTitle: false,
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      labelTextStyle: WidgetStateTextStyle.resolveWith(
+        (states) {
+          if (states.contains(WidgetState.selected)) return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+
+          return AppTypography.defaultTextStyle;
+        },
+      ),
     ),
   );
 }

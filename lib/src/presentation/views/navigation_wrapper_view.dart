@@ -5,18 +5,22 @@ import 'package:go_router/go_router.dart';
 
 class NavigationWrapperView extends ConsumerStatefulWidget {
   final StatefulNavigationShell navigationShell;
+
   const NavigationWrapperView({
     required this.navigationShell,
     super.key,
   });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AmiaHomePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _NavigationWrapperViewState();
 }
 
-class _AmiaHomePageState extends ConsumerState<NavigationWrapperView> {
+class _NavigationWrapperViewState extends ConsumerState<NavigationWrapperView> {
   void _navigateTo(int index) {
-    widget.navigationShell.goBranch(index);
+    widget.navigationShell.goBranch(
+      index,
+      initialLocation: index == widget.navigationShell.currentIndex,
+    );
   }
 
   @override
@@ -41,7 +45,7 @@ class _AmiaHomePageState extends ConsumerState<NavigationWrapperView> {
         onDestinationSelected: _navigateTo,
       ),
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(58),
+        preferredSize: Size.fromHeight(56),
         child: AppTopNavigationBar(),
       ),
       body: widget.navigationShell,

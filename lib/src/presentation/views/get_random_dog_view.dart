@@ -3,16 +3,16 @@ import 'package:amia_assignment/src/presentation/theme/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GetDogPage extends ConsumerStatefulWidget {
+class GetRandomDog extends ConsumerStatefulWidget {
   final Object? arguments;
 
-  const GetDogPage({this.arguments, super.key});
+  const GetRandomDog({this.arguments, super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _GetDogPageState();
 }
 
-class _GetDogPageState extends ConsumerState<GetDogPage> {
+class _GetDogPageState extends ConsumerState<GetRandomDog> {
   @override
   Widget build(BuildContext context) {
     final dogData = ref.watch(randomDogImageProvider);
@@ -36,9 +36,7 @@ class _GetDogPageState extends ConsumerState<GetDogPage> {
                 ),
               ),
               const SizedBox(height: 16.0),
-              FilledButton.tonal(
-                  onPressed: () => ref.refresh(randomDogImageProvider),
-                  child: const AppText.m('I want more!'))
+              FilledButton.tonal(onPressed: () => ref.refresh(randomDogImageProvider), child: const AppText.m('I want more!'))
             ],
           ),
         ),

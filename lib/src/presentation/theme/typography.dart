@@ -4,6 +4,7 @@ class AppTypography {
   static TextStyle defaultTextStyle = const TextStyle(
     fontWeight: FontWeight.w400,
     height: 1,
+    fontFamily: 'RedditMono',
   );
 }
 
@@ -16,6 +17,7 @@ class AppText extends StatelessWidget {
   final Color? color;
   final TextAlign? textAlign;
   final bool isSingleLine;
+  final bool isLight;
 
   const AppText(
     this.text, {
@@ -27,6 +29,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   });
 
   const AppText.xs(
@@ -38,6 +41,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.xs;
 
   const AppText.s(
@@ -49,6 +53,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.s;
 
   const AppText.m(
@@ -60,6 +65,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.m;
 
   const AppText.l(
@@ -71,6 +77,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.l;
 
   const AppText.xl(
@@ -82,6 +89,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.xl;
 
   const AppText.xxl(
@@ -93,11 +101,14 @@ class AppText extends StatelessWidget {
     this.color,
     this.textAlign,
     this.isSingleLine = false,
+    this.isLight = false,
   }) : textSize = TextSize.xxl;
+
+  FontWeight get fontWeight => isBold ? FontWeight.w700 : isLight ? FontWeight.w200 : FontWeight.w400;
 
   TextStyle get style => AppTypography.defaultTextStyle.copyWith(
         fontSize: textSize.size,
-        fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+        fontWeight: fontWeight,
         color: color,
       );
 
