@@ -20,8 +20,6 @@ class NavigationWrapperPage extends ConsumerStatefulWidget {
 }
 
 class _AmiaAssignmentAppState extends ConsumerState<NavigationWrapperPage> {
-  final router = AppRouter();
-
   @override
   Widget build(BuildContext context) {
     final theme = ref.watch(appThemeProvider);
@@ -32,7 +30,7 @@ class _AmiaAssignmentAppState extends ConsumerState<NavigationWrapperPage> {
       darkTheme: AppThemeData.darkTheme,
       themeMode: theme.themeMode,
       debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+      routerConfig: router,
     );
   }
 }
