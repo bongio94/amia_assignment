@@ -25,7 +25,7 @@ class _AmiaAssignmentAppState extends ConsumerState<NavigationWrapperPage> {
     final theme = ref.watch(appThemeProvider);
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Dog Collection',
       theme: theme.themeData,
       darkTheme: AppThemeData.darkTheme,
       themeMode: theme.themeMode,
