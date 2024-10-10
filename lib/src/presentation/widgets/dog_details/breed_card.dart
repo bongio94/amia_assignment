@@ -75,7 +75,7 @@ class _BreedCardState extends ConsumerState<BreedTile> {
         ),
       AsyncError(:final error) => Text('Error: $error'),
       _ => const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         ),
     };
   }

@@ -20,7 +20,7 @@ class _AppTopNavigationBarState extends ConsumerState<AppTopNavigationBar> {
 
     return AppBar(
       title: AppText.xl(
-        'Amia App',
+        'Dog Collection',
         isBold: true,
         textStyle: AppTypography.defaultTextStyle.copyWith(color: scheme.onPrimary),
       ),
@@ -28,7 +28,9 @@ class _AppTopNavigationBarState extends ConsumerState<AppTopNavigationBar> {
         IconButton(
           color: scheme.onPrimary,
           onPressed: () {
-            ref.read(appThemeProvider.notifier).setTheme(theme.isLight ? ThemeMode.dark : ThemeMode.light);
+            ref
+                .read(appThemeProvider.notifier)
+                .setTheme(theme.isLight ? ThemeMode.dark : ThemeMode.light);
           },
           icon: Icon(
             theme.isLight ? Icons.dark_mode_rounded : Icons.light_mode_rounded,

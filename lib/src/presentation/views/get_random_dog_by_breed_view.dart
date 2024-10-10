@@ -31,7 +31,9 @@ class _GetRandomDogByBreedViewState extends ConsumerState<GetRandomDogByBreedVie
             },
           ),
         AsyncError(:final error) => Text('Error: $error'),
-        _ => const Center(child: CircularProgressIndicator()),
+        _ => const Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
       },
     );
   }

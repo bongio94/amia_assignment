@@ -41,7 +41,9 @@ class SubBreedCardStateless extends ConsumerWidget {
           ),
         ),
       AsyncError(:final error) => Text('Error: $error'),
-      _ => const Center(child: CircularProgressIndicator()),
+      _ => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
     };
   }
 }

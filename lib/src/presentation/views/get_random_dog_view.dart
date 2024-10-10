@@ -19,7 +19,9 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
     final dogData = ref.watch(randomDogImageProvider);
 
     return Scaffold(
-      floatingActionButton: FilledButton.tonal(onPressed: () => ref.refresh(randomDogImageProvider), child: const AppText.m('I want more!')),
+      floatingActionButton: FilledButton.tonal(
+          onPressed: () => ref.refresh(randomDogImageProvider),
+          child: const AppText.m('I want more!')),
       body: switch (dogData) {
         AsyncData(:final value) => SingleChildScrollView(
             child: Column(
@@ -43,7 +45,9 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
             ),
           ),
         AsyncError(:final error) => Text('Error: $error'),
-        _ => const Center(child: CircularProgressIndicator()),
+        _ => const Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
       },
     );
   }
