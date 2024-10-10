@@ -1,5 +1,5 @@
 import 'package:amia_assignment/src/data/repository.dart';
-import 'package:amia_assignment/src/presentation/widgets/common/breed_card.dart';
+import 'package:amia_assignment/src/presentation/widgets/dog_details/breed_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,22 +15,25 @@ class _GetRandomDogByBreedViewState extends ConsumerState<GetRandomDogByBreedVie
   Widget build(BuildContext context) {
     final breeds = ref.watch(randomDogByBreedProvider);
 
-    return switch (breeds) {
-      AsyncData(:final value) => ListView.builder(
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: BreedCard(
-                breed: value.message.keys.toList()[index],
-                subBreeds: value.message[value.message.keys.toList()[index]]!.length,
-              ),
-            );
-          },
-        ),
-      AsyncError(:final error) => Text('Error: $error'),
-      _ => const Center(child: CircularProgressIndicator()),
-    };
+    return Scaffold(
+      body: switch (breeds) {
+        AsyncData(:final value) => ListView.builder(
+            shrinkWrap: true,
+            itemCount: value.message.keys.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: BreedTile(
+                  breed: value.message.keys.toList()[index],
+                  subBreeds: value.message[value.message.keys.toList()[index]]!.length,
+                ),
+              );
+            },
+          ),
+        AsyncError(:final error) => Text('Error: $error'),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
+    );
   }
 }
 

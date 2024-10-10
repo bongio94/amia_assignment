@@ -14,6 +14,9 @@ class AppThemeData {
       backgroundColor: lightScheme.primary,
       centerTitle: false,
     ),
+    listTileTheme: ListTileThemeData(
+      tileColor: lightScheme.surfaceContainer,
+    ),
     navigationBarTheme: NavigationBarThemeData(
       labelTextStyle: WidgetStateTextStyle.resolveWith(
         (states) {
@@ -31,6 +34,9 @@ class AppThemeData {
     appBarTheme: AppBarTheme(
       backgroundColor: darkScheme.primary,
       centerTitle: false,
+    ),
+    listTileTheme: ListTileThemeData(
+      tileColor: darkScheme.surfaceContainer,
     ),
     navigationBarTheme: NavigationBarThemeData(
       labelTextStyle: WidgetStateTextStyle.resolveWith(
