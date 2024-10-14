@@ -3,8 +3,15 @@ import 'package:amia_assignment/src/presentation/theme/theme_provider.dart';
 import 'package:amia_assignment/src/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  await Hive.openBox<List<String>>('favs');
+
   runApp(
     const ProviderScope(
       child: NavigationWrapperPage(),
