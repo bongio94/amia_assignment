@@ -10,7 +10,9 @@ void main() async {
 
   await Hive.initFlutter();
 
-  await Hive.openBox<List<String>>('favs');
+  await Hive.openBox<Map<String, int>>('favs');
+
+  await Hive.box<Map<String, int>>('favs').clear();
 
   runApp(
     const ProviderScope(
