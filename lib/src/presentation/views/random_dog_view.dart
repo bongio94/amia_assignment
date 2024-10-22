@@ -34,7 +34,9 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
     return Scaffold(
       floatingActionButton: FilledButton.tonal(
         onPressed: groupValue != null
-            ? () => ref.refresh(subBreed.isNotEmpty ? randomDogBySubBreedImageProvider(subBreed) : randomDogImageProvider(groupValue))
+            ? () => ref.refresh(subBreed.isNotEmpty
+                ? randomDogBySubBreedImageProvider(subBreed)
+                : randomDogImageProvider(groupValue))
             : null,
         child: const AppText.m('I want more!'),
       ),
@@ -96,7 +98,8 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                           setState(() {
                             subBreed = [];
                           });
-                          if (scrollController.hasClients && scrollController.position.extentBefore > 0) {
+                          if (scrollController.hasClients &&
+                              scrollController.position.extentBefore > 0) {
                             scrollController.animateTo(
                               0,
                               duration: const Duration(milliseconds: 300),
@@ -112,7 +115,7 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                   return ExpansionTile(
                     dense: true,
                     tilePadding: const EdgeInsets.only(right: 16),
-                    leading: Radio.adaptive(
+                    leading: Radio(
                       value: value.message.keys.toList()[index],
                       groupValue: groupValue,
                       onChanged: (breed) {
@@ -120,7 +123,8 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                         setState(() {
                           subBreed = [];
                         });
-                        if (scrollController.hasClients && scrollController.position.extentBefore > 0) {
+                        if (scrollController.hasClients &&
+                            scrollController.position.extentBefore > 0) {
                           scrollController.animateTo(
                             0,
                             duration: const Duration(milliseconds: 300),
@@ -144,9 +148,13 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                               onChanged: (breed) {
                                 ref.read(groupValueProvider.notifier).state = breed;
                                 setState(() {
-                                  subBreed = [value.message.keys.toList()[index], value.message[value.message.keys.toList()[index]]![innerIndex]];
+                                  subBreed = [
+                                    value.message.keys.toList()[index],
+                                    value.message[value.message.keys.toList()[index]]![innerIndex]
+                                  ];
                                 });
-                                if (scrollController.hasClients && scrollController.position.extentBefore > 0) {
+                                if (scrollController.hasClients &&
+                                    scrollController.position.extentBefore > 0) {
                                   scrollController.animateTo(
                                     0,
                                     duration: const Duration(milliseconds: 300),
@@ -155,7 +163,8 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                                 }
                               },
                               child: AppText.m(
-                                value.message[value.message.keys.toList()[index]]![innerIndex].capitalize(),
+                                value.message[value.message.keys.toList()[index]]![innerIndex]
+                                    .capitalize(),
                               ),
                             ),
                           );
@@ -190,7 +199,9 @@ class DogImage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dynamic imageByBreed = ref.watch(subBreed.isNotEmpty ? randomDogBySubBreedImageProvider(subBreed) : randomDogImageProvider(groupValue));
+    final dynamic imageByBreed = ref.watch(subBreed.isNotEmpty
+        ? randomDogBySubBreedImageProvider(subBreed)
+        : randomDogImageProvider(groupValue));
 
     return switch (imageByBreed) {
       AsyncData(:final value) => ClipRRect(
