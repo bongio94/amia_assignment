@@ -87,7 +87,7 @@ class _GetDogPageState extends ConsumerState<GetRandomDog> {
                 itemBuilder: (context, index) {
                   if (value.message[value.message.keys.toList()[index]]!.isEmpty) {
                     return Padding(
-                      padding: const EdgeInsets.only(left: 2),
+                      padding: const EdgeInsets.only(left: 3),
                       child: RadioMenuButton(
                         value: value.message.keys.toList()[index],
                         groupValue: groupValue,
