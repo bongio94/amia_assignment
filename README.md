@@ -25,7 +25,9 @@ When first opening the app the users will see two buttons and a bottom navigatio
 
 ## Additional notes
 
-When developing this app I've tried to use platform specific widgets when possible. The main examples are the radio buttons, loading indicators and routes animations.
+When developing this app I've tried to use platform specific widgets when possible.
+
+The main examples are the loading indicators and routes animations. I could have added more adaptive widgets (radio buttons for example) but decided not to for maintaining a visually pleasing UI.
 
 ## Third Party Packages Used
 - Riverpod for state management
@@ -41,5 +43,5 @@ When developing this app I've tried to use platform specific widgets when possib
 
 ## Project Structure
 - `lib/src/data`: Data models, repository, and API services
-- `lib/src/presentation`: UI components, widgets, and theming
+- `lib/src/presentation`: Views, widgets, and theming
 - `lib/src/router`: App routing configuration and navigation logic
