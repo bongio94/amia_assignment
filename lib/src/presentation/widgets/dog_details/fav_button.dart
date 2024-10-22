@@ -4,20 +4,35 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FavButton extends ConsumerWidget {
   final String selectedBreed;
-  const FavButton({required this.selectedBreed, super.key});
+  final int subBreeds;
+  const FavButton({
+    required this.selectedBreed,
+    required this.subBreeds,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favorites = ref.watch(favoritesProvider);
+    final isFavorite =
+        ref.watch(favoritesProvider.select((favorites) => favorites.containsKey(selectedBreed)));
     final notifier = ref.read(favoritesProvider.notifier);
-    final scheme = Theme.of(context).colorScheme;
 
     return IconButton(
       onPressed: () async {
-        notifier.toggleFavorite(selectedBreed);
+        notifier.toggleFavorite(selectedBreed, subBreeds);
       },
-      icon: Icon(
-        favorites.contains(selectedBreed) ? Icons.favorite_rounded : Icons.favorite_outline_rounded,
+      icon: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        switchInCurve: Curves.easeInOutCubic,
+        switchOutCurve: Curves.easeInOutCubic,
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return ScaleTransition(scale: animation, child: child);
+        },
+        child: Icon(
+          isFavorite ? Icons.favorite_rounded : Icons.favorite_outline_rounded,
+          color: isFavorite ? Colors.red : null,
+          key: ValueKey<bool>(isFavorite),
+        ),
       ),
     );
   }
