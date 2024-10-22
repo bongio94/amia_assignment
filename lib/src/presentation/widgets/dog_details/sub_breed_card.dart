@@ -4,11 +4,11 @@ import 'package:amia_assignment/src/presentation/widgets/common/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SubBreedCardStateless extends ConsumerWidget {
+class SubBreedCard extends ConsumerWidget {
   final String breed;
   final String subBreed;
 
-  const SubBreedCardStateless({
+  const SubBreedCard({
     required this.breed,
     required this.subBreed,
     super.key,

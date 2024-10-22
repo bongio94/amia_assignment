@@ -1,6 +1,6 @@
 import 'package:amia_assignment/src/presentation/views/favs_view.dart';
-import 'package:amia_assignment/src/presentation/views/get_random_dog_by_breed_view.dart';
-import 'package:amia_assignment/src/presentation/views/get_random_dog_view.dart';
+import 'package:amia_assignment/src/presentation/views/breed_list_view.dart';
+import 'package:amia_assignment/src/presentation/views/random_dog_view.dart';
 import 'package:amia_assignment/src/presentation/views/home_view.dart';
 import 'package:amia_assignment/src/presentation/views/navigation_wrapper_view.dart';
 import 'package:flutter/cupertino.dart';
