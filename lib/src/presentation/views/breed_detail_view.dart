@@ -94,7 +94,7 @@ class _BreedDetailsViewState extends ConsumerState<BreedDetailsView> with Ticker
                       return Column(
                         mainAxisSize: MainAxisSize.min,
                         children: data.message.map((subBreed) {
-                          return SubBreedCardStateless(breed: widget.breed, subBreed: subBreed);
+                          return SubBreedCard(breed: widget.breed, subBreed: subBreed);
                         }).toList(),
                       );
                     },
