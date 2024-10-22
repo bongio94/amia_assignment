@@ -30,7 +30,6 @@ class _BreedDetailsViewState extends ConsumerState<BreedDetailsView> with Ticker
 
     return BottomSheet(
       onClosing: () {},
-      animationController: BottomSheet.createAnimationController(this),
       builder: (context) {
         return Container(
           clipBehavior: Clip.hardEdge,
