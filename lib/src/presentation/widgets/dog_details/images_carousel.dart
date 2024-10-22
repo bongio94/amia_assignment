@@ -9,10 +9,12 @@ const _kCarouselAnimationDurationInMs = 200;
 class DogImagesCarousel extends ConsumerStatefulWidget {
   const DogImagesCarousel({
     required this.images,
+    this.padding,
     super.key,
   });
 
   final List<String> images;
+  final double? padding;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DogImagesCarouselState();
@@ -51,7 +53,7 @@ class _DogImagesCarouselState extends ConsumerState<DogImagesCarousel> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final carouselItemExtent = size.width;
+    final carouselItemExtent = size.width - (widget.padding ?? 0);
 
     return SizedBox(
       height: size.height * 0.4,
