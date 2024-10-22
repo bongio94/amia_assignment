@@ -104,7 +104,11 @@ class AppText extends StatelessWidget {
     this.isLight = false,
   }) : textSize = TextSize.xxl;
 
-  FontWeight get fontWeight => isBold ? FontWeight.w700 : isLight ? FontWeight.w200 : FontWeight.w400;
+  FontWeight get fontWeight => isBold
+      ? FontWeight.w700
+      : isLight
+          ? FontWeight.w200
+          : FontWeight.w400;
 
   TextStyle get style => AppTypography.defaultTextStyle.copyWith(
         fontSize: textSize.size,
@@ -128,4 +132,10 @@ enum TextSize {
 
   final double size;
   const TextSize(this.size);
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+  }
 }
