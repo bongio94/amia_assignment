@@ -2,6 +2,7 @@ import 'package:amia_assignment/src/data/repository.dart';
 import 'package:amia_assignment/src/presentation/theme/typography.dart';
 import 'package:amia_assignment/src/presentation/views/breed_detail_view.dart';
 import 'package:amia_assignment/src/presentation/widgets/common/app_image.dart';
+import 'package:amia_assignment/src/presentation/widgets/dog_details/fav_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,15 +43,17 @@ class _BreedCardState extends ConsumerState<BreedTile> {
               onTap: () {
                 ref.read(currentBreedProvider.notifier).state = widget.breed;
                 showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    useSafeArea: true,
-                    builder: (context) {
-                      return BreedDetailsView(
-                        images: value.message,
-                        breed: widget.breed.capitalize(),
-                      );
-                    });
+                  context: context,
+                  isScrollControlled: true,
+                  useSafeArea: true,
+                  builder: (context) {
+                    return BreedDetailsView(
+                      images: value.message,
+                      breed: widget.breed.capitalize(),
+                      subBreeds: widget.subBreeds,
+                    );
+                  },
+                );
               },
               title: AppText.l(
                 widget.breed.capitalize(),
@@ -61,6 +64,10 @@ class _BreedCardState extends ConsumerState<BreedTile> {
                 '${widget.subBreeds} ${widget.subBreeds == 1 ? 'sub-breed' : 'sub-breeds'} found',
                 color: scheme.onSurface,
                 isLight: true,
+              ),
+              trailing: FavButton(
+                selectedBreed: widget.breed,
+                subBreeds: widget.subBreeds,
               ),
               leading: Container(
                 width: size.width * 0.2,
@@ -84,9 +91,3 @@ class _BreedCardState extends ConsumerState<BreedTile> {
 final currentBreedProvider = StateProvider<String>((ref) {
   return '';
 });
-
-extension StringExtension on String {
-  String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
-  }
-}
