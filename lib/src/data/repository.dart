@@ -6,12 +6,13 @@ import 'package:amia_assignment/src/presentation/widgets/dog_details/breed_card.
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-const _randomDogImageEndpoint = "https://dog.ceo/api/breeds/image/random";
+const _randomDogImageBaseEndpoint = "https://dog.ceo/api/breed/";
 const _breedsListEndpoint = "https://dog.ceo/api/breeds/list/all";
 const _breedBaseEndpoint = "https://dog.ceo/api/breed/";
 
-final randomDogImageProvider = FutureProvider<RandomDogImageResponse>((ref) async {
-  final response = await http.get(Uri.parse(_randomDogImageEndpoint));
+
+final randomDogImageProvider = FutureProvider.family<RandomDogImageResponse, String>((ref, breed) async {
+  final response = await http.get(Uri.parse('$_randomDogImageBaseEndpoint${breed.toLowerCase()}/images/random'));
 
   if (response.statusCode == 200) {
     return RandomDogImageResponse.fromJson(jsonDecode(response.body));
@@ -50,13 +51,29 @@ final subBreedProvider = FutureProvider.family<SubBreedResponse, String>((ref, b
   throw Exception('Failed to fetch breed list');
 });
 
-final subBreedRandomImageProvider = FutureProvider.autoDispose.family<RandomDogImageResponse, String>((ref, breed) async {
+final subBreedRandomImageProvider =
+    FutureProvider.autoDispose.family<RandomDogImageResponse, String>((ref, breed) async {
   final currentBreed = ref.watch(currentBreedProvider);
 
-  final response = await http.get(Uri.parse('$_breedBaseEndpoint${currentBreed.toLowerCase()}/${breed.toLowerCase()}/images/random'));
+  final response = await http.get(Uri.parse(
+      '$_breedBaseEndpoint${currentBreed.toLowerCase()}/${breed.toLowerCase()}/images/random'));
 
   if (response.statusCode == 200) {
     return RandomDogImageResponse.fromJson(jsonDecode(response.body));
+  }
+
+  throw Exception('Failed to fetch breed list');
+});
+
+final subBreedImagesProvider =
+    FutureProvider.autoDispose.family<BreedImage, String>((ref, breed) async {
+  final currentBreed = ref.watch(currentBreedProvider);
+
+  final response = await http.get(
+      Uri.parse('$_breedBaseEndpoint${currentBreed.toLowerCase()}/${breed.toLowerCase()}/images'));
+
+  if (response.statusCode == 200) {
+    return BreedImage.fromJson(jsonDecode(response.body));
   }
 
   throw Exception('Failed to fetch breed list');
