@@ -1,7 +1,6 @@
 import 'package:amia_assignment/src/data/repository.dart';
 import 'package:amia_assignment/src/presentation/theme/typography.dart';
 import 'package:amia_assignment/src/presentation/widgets/common/app_image.dart';
-import 'package:amia_assignment/src/presentation/widgets/dog_details/breed_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
