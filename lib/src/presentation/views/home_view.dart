@@ -15,21 +15,19 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
+      body: ListView(
         padding: const EdgeInsets.all(8.0),
-        crossAxisCount: 2,
-        mainAxisSpacing: 4.0,
-        crossAxisSpacing: 4.0,
-        childAspectRatio: 16 / 9,
         children: [
           GetACard(
             label: 'Get a random Dog',
+            icon: Icons.shuffle,
             onTap: () {
               context.pushNamed(AppRoutes.getRandomDog.routeName, extra: RequestType.randomDog);
             },
           ),
           GetACard(
-            label: 'Get a random Dog by breed',
+            label: 'List all breeds',
+            icon: Icons.list,
             onTap: () {
               context.pushNamed(AppRoutes.getAllBreeds.routeName, extra: RequestType.randomDogByBreed);
             },
