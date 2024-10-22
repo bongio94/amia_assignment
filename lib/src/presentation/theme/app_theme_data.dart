@@ -20,7 +20,9 @@ class AppThemeData {
     navigationBarTheme: NavigationBarThemeData(
       labelTextStyle: WidgetStateTextStyle.resolveWith(
         (states) {
-          if (states.contains(WidgetState.selected)) return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+          if (states.contains(WidgetState.selected)) {
+            return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+          }
 
           return AppTypography.defaultTextStyle;
         },
@@ -41,7 +43,9 @@ class AppThemeData {
     navigationBarTheme: NavigationBarThemeData(
       labelTextStyle: WidgetStateTextStyle.resolveWith(
         (states) {
-          if (states.contains(WidgetState.selected)) return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+          if (states.contains(WidgetState.selected)) {
+            return AppTypography.defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+          }
 
           return AppTypography.defaultTextStyle;
         },

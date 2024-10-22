@@ -24,21 +24,28 @@ class AppTheme {
 }
 
 class AppThemeNotifier extends StateNotifier<AppTheme> {
-  AppThemeNotifier()
-      : super(
-          AppTheme(
-            themeData: AppThemeData.lightTheme,
-            themeMode: ThemeMode.light,
-            isLight: true,
-          ),
-        );
+  AppThemeNotifier() : super(_initialTheme);
+
+  static final _initialTheme = AppTheme(
+    themeData: AppThemeData.lightTheme,
+    themeMode: ThemeMode.light,
+    isLight: true,
+  );
+
+  static final _lightTheme = AppTheme(
+    themeData: AppThemeData.lightTheme,
+    themeMode: ThemeMode.light,
+    isLight: true,
+  );
+
+  static final _darkTheme = AppTheme(
+    themeData: AppThemeData.darkTheme,
+    themeMode: ThemeMode.dark,
+    isLight: false,
+  );
 
   void setTheme(ThemeMode mode) {
-    state = state.copyWith(
-      themeMode: mode,
-      themeData: mode == ThemeMode.light ? AppThemeData.lightTheme : AppThemeData.darkTheme,
-      isLight: mode == ThemeMode.light,
-    );
+    state = mode == ThemeMode.light ? _lightTheme : _darkTheme;
   }
 }
 
