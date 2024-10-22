@@ -1,5 +1,6 @@
 import 'package:amia_assignment/src/data/repository.dart';
 import 'package:amia_assignment/src/presentation/theme/typography.dart';
+import 'package:amia_assignment/src/presentation/widgets/dog_details/fav_button.dart';
 import 'package:amia_assignment/src/presentation/widgets/dog_details/images_carousel.dart';
 import 'package:amia_assignment/src/presentation/widgets/dog_details/sub_breed_card.dart';
 import 'package:flutter/material.dart';
@@ -10,21 +11,19 @@ class BreedDetailsView extends ConsumerStatefulWidget {
   const BreedDetailsView({
     required this.images,
     required this.breed,
-    this.subBreeds = const [],
+    this.subBreeds = 0,
     super.key,
   });
 
   final List<String> images;
   final String breed;
-  final List<String> subBreeds;
+  final int subBreeds;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _BreedDetailsViewState();
 }
 
 class _BreedDetailsViewState extends ConsumerState<BreedDetailsView> with TickerProviderStateMixin {
-
-
   @override
   Widget build(BuildContext context) {
     final subBreeds = ref.watch(subBreedProvider(widget.breed));
@@ -47,9 +46,18 @@ class _BreedDetailsViewState extends ConsumerState<BreedDetailsView> with Ticker
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppText.xl(
-                          widget.breed,
-                          isBold: true,
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            AppText.xl(
+                              widget.breed,
+                              isBold: true,
+                            ),
+                            FavButton(
+                              selectedBreed: widget.breed.toLowerCase(),
+                              subBreeds: widget.subBreeds,
+                            ),
+                          ],
                         ),
                         IconButton.filledTonal(
                           onPressed: () {
