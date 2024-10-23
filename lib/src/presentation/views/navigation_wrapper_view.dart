@@ -50,18 +50,5 @@ class _NavigationWrapperViewState extends ConsumerState<NavigationWrapperView> {
       ),
       body: widget.navigationShell,
     );
-
-    /* return FutureBuilder(
-      future: AmiaAppRepository.fetchRandomDogImage(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        }
-
-        return Container();
-      },
-    ); */
   }
 }
