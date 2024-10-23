@@ -11,6 +11,12 @@ class AppImage extends ConsumerWidget {
     return Image.network(
       image,
       fit: BoxFit.cover,
+      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+        if (loadingProgress == null) {
+          return child;
+        }
+        return const Center(child: CircularProgressIndicator.adaptive());
+      },
       frameBuilder: (BuildContext context, Widget child, int? frame, bool wasSynchronouslyLoaded) {
         if (wasSynchronouslyLoaded) {
           return child;
