@@ -23,12 +23,7 @@ When first opening the app the users will see two buttons and a bottom navigatio
 
 ## Screenshots
 
-![Screenshot 1](assets/documentation/images/1.png) {:height="36px" width="36px"}
-
-![Screenshot 2](assets/documentation/images/2.png) { height=50%}
-![Screenshot 3](assets/documentation/images/3.png)
-![Screenshot 4](assets/documentation/images/4.png)
-![Screenshot 4](assets/documentation/images/5.png)
+Check the [assets/documentation/images](assets/documentation/images) folder for screenshots.
 
 
 ## Additional notes
