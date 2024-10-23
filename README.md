@@ -5,11 +5,9 @@ Dog Collection is a Flutter application that allows users to explore various dog
 
 ## Features
 - Browse a comprehensive list of dog breeds
-- View and swipe through random dog images
-- Explore detailed information and multiple images for specific breeds
+- Explore detailed information and multiple images for specific breeds and sub-breeds
 - Mark and manage favorite breeds
-- Seamless dark and light theme support
-- Explore sub-breeds for applicable dog breeds
+- Dark and light theme support
 
 ## How to use it
 
@@ -22,6 +20,16 @@ When first opening the app the users will see two buttons and a bottom navigatio
 - For navigating back to the home screen the users can use the OS navigation gestures or tap the *Home* button on the bottom navigation bar.
 
 - The *Favorites* button on the bottom navigation bar will take the users to the list of their favorite breeds. In this screen they can see the list of all of their favorite breeds and by tapping the heart shaped icon button on the right they can remove a breed from their favorites.
+
+## Screenshots
+
+![Screenshot 1](assets/documentation/images/1.png) {:height="36px" width="36px"}
+
+![Screenshot 2](assets/documentation/images/2.png) { height=50%}
+![Screenshot 3](assets/documentation/images/3.png)
+![Screenshot 4](assets/documentation/images/4.png)
+![Screenshot 4](assets/documentation/images/5.png)
+
 
 ## Additional notes
 
