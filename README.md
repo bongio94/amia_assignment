@@ -33,10 +33,11 @@ When developing this app I've tried to use platform specific widgets when possib
 The main examples are the loading indicators and routes animations. I could have added more adaptive widgets (radio buttons for example) but decided not to for maintaining a visually pleasing UI.
 
 ## Third Party Packages Used
-- Riverpod for state management
-- Hive for local storage
-- GoRouter for navigation
-- HTTP package for API requests
+- [Riverpod](https://pub.dev/packages/flutter_riverpod) for state management
+- [Hive](https://pub.dev/packages/hive_flutter) for local storage
+- [GoRouter](https://pub.dev/packages/go_router) for navigation
+- [HTTP](https://pub.dev/packages/http) package for API requests
+- [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons) for setting the app icon
 
 ## Getting Started
 1. Clone the repository: `git clone https://github.com/yourusername/dog-collection-app.git`
