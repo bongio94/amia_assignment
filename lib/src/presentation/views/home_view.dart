@@ -22,23 +22,18 @@ class _HomeViewState extends ConsumerState<HomeView> {
             label: 'Get a random Dog',
             icon: Icons.shuffle,
             onTap: () {
-              context.pushNamed(AppRoutes.getRandomDog.routeName, extra: RequestType.randomDog);
+              context.pushNamed(AppRoutes.getRandomDog.routeName);
             },
           ),
           GetACard(
             label: 'List all breeds',
             icon: Icons.list,
             onTap: () {
-              context.pushNamed(AppRoutes.getAllBreeds.routeName, extra: RequestType.randomDogByBreed);
+              context.pushNamed(AppRoutes.getAllBreeds.routeName);
             },
           ),
         ],
       ),
     );
   }
-}
-
-enum RequestType {
-  randomDog,
-  randomDogByBreed,
 }
